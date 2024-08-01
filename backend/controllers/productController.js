@@ -6,12 +6,18 @@ import Product from '../models/productModel.js'
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const { category } = req.query;
+  const cat = req.query;
+  if( cat !='All'){
+    const filter = cat;
+    const products = await Product.find(filter);
+    res.json(products);
+  }
+  else{
+    const products=await Product.find();
+    res.json(products);
+    console.log(products);
+  }
   
-  const filter = category ? { category } : {};
-  const products = await Product.find(filter);
-
-  res.json(products);
 });
 
 // @desc    Fetch single product

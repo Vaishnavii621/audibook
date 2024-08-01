@@ -16,11 +16,6 @@ import bcrypt from 'bcryptjs'
        type: String,
        required: true,
      },
-     isAdmin: {
-       type: Boolean,
-       required: true,
-       default: false,
-     },
    },
    {
      timestamps: true,
